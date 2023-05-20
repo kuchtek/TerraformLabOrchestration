@@ -29,7 +29,7 @@ jobs:
       working-directory: ./terraform_code
     - name: Terraform Validate
       id: Validate
-      run: terraform validate -var-file ./lab.tfvars
+      run: terraform validate
       working-directory: ./terraform_code
 
     - name: Terraform Apply
