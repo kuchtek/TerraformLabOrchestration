@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~>v1.4.4"
+  required_version = "v1.4.4"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -7,7 +7,6 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "terraform-markuc"
     key    = "network/terraform.tfstate"
     region = "eu-central-1"
   }
