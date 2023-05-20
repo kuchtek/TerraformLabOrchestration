@@ -26,7 +26,7 @@ jobs:
 
     - name: Terraform Init
       id: init
-      run: terraform init -var-file ./lab.tfvars
+      run: terraform init -var-file ./lab.tfvars -backend-config="access_key=$AWS_ACCESS_KEY_ID" -backend-config="secret_key=$AWS_SECRET_ACCESS_KEY" -backend-config="region=eu-central-1" 
       working-directory: ./terraform_code
 
     - name: Terraform Validate
