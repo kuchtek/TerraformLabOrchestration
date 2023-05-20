@@ -33,5 +33,4 @@ jobs:
 
     - name: Terraform Apply
       run: terraform apply -var-file ./lab.tfvars -auto-approve -input=false
-      env:
       working-directory: ./terraform_code
