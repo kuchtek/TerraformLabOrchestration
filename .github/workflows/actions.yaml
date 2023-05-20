@@ -21,7 +21,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       
     - name: Change dir to terraform_code
-      run: cd ./terraform_codegot
+      run: cd ./terraform_code
 
     - name: Terraform Init
       id: init
