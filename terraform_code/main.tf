@@ -13,5 +13,5 @@ terraform {
 }
 
 provider "aws" {
-  region = "${var.default_region}"
+  region = "${var.current_region}"
 }
