@@ -9,10 +9,10 @@ terraform {
   backend "s3" {
     bucket = "terraform-markuc"
     key    = "network/terraform.tfstate"
-    region = "${var.default_region}"
+    region = "eu-central-1"
   }
 }
 
-/* provider "aws" {
+provider "aws" {
   region = "${var.default_region}"
-} */
+}
