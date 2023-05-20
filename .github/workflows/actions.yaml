@@ -19,17 +19,16 @@ jobs:
         TF_ACTION_WORKING_DIR: 'terraform_code'
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      
-    - name: Change dir to terraform_code
-      run: cd ./terraform_code
 
     - name: Terraform Init
       id: init
       run: terraform init
+      working-directory: ./terraform_code
 
     - name: Terraform Validate
       id: Validate
       run: terraform validate
+      working-directory: ./terraform_code
 
     - name: Terraform Apply
       run: terraform apply
@@ -38,3 +37,4 @@ jobs:
         TF_ACTION_WORKING_DIR: 'terraform_code'
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      working-directory: ./terraform_code
