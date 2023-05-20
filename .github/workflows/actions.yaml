@@ -22,16 +22,16 @@ jobs:
 
     - name: Terraform Init
       id: init
-      run: terraform init
+      run: terraform init -var-file ./lab.tfvars
       working-directory: ./terraform_code
 
     - name: Terraform Validate
       id: Validate
-      run: terraform validate
+      run: terraform validate -var-file ./lab.tfvars
       working-directory: ./terraform_code
 
     - name: Terraform Apply
-      run: terraform apply
+      run: terraform apply -var-file ./lab.tfvars
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TF_ACTION_WORKING_DIR: 'terraform_code'
