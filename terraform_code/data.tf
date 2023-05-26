@@ -28,9 +28,4 @@ data "aws_ami" "amznubuntu" {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20230325"]
   }
-
-  filter {
-    name = "boot-mode"
-    values = ["nitro"]
-  }
 }
