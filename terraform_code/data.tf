@@ -12,7 +12,7 @@ data "aws_ami" "amznlinux" {
 
   filter {
     name   = "name"
-    values = ["al2023*"]
+    values = ["al2023*x86_64"]
   }
 }
 
