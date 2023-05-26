@@ -5,12 +5,13 @@ on:
     branches:
       - master
   workflow_dispatch:
-    action:
-      description: 'Terraform Action to Perform'
-      type: choice
-      options:
-      - Terraform_apply
-      - Terraform_destroy
+    inputs:
+      action:
+        description: 'Terraform Action to Perform'
+        type: choice
+        options:
+        - Terraform_apply
+        - Terraform_destroy
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   TF_ACTION_WORKING_DIR: 'terraform_code'
