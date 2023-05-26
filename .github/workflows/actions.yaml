@@ -66,5 +66,5 @@ jobs:
       run: terraform validate
       working-directory: ./terraform_code
     - name: Terraform destroy
-      id: Destroy Infra
+      id: Destroy
       run: terraform destroy -auto-approve -var-file=./lab.tfvars
