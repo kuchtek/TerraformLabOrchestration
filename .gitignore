@@ -34,3 +34,4 @@ terraform.rc
 .vscode
 **/*.pem
 terraform_ec2_keypair/
+terraform_ec2_keypair/**
