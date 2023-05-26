@@ -12,6 +12,7 @@ on:
         options:
         - Terraform_apply
         - Terraform_destroy
+        default: Terraform_apply
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   TF_ACTION_WORKING_DIR: 'terraform_code'
