@@ -20,5 +20,5 @@ resource "aws_instance" "ansible_test_ubuntu" {
     "Name"    = "ansible_test_ubuntu"
     "purpose" = "lab"
   }
-  
+
 }
