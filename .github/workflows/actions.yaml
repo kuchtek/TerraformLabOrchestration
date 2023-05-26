@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+    action:
+      description: 'Terraform Action to Perform'
+      type: choice
+      options:
+      - Terraform_apply
+      - Terraform_destroy
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   TF_ACTION_WORKING_DIR: 'terraform_code'
@@ -11,8 +18,9 @@ env:
   AWS_SECRET_ACCESS_KEY:  ${{ secrets.SECRET_ACCESS_KEY }}
   BUCKET_TF_STATE: "terraform-markuc"
 jobs:
-  tf_fmt:
+  apply:
     name: Deploy Infra
+    if: ${{ github.event.inputs.action == 'Terraform_apply' }}
     runs-on: ubuntu-latest
     steps:
 
@@ -33,9 +41,30 @@ jobs:
       working-directory: ./terraform_code
 
     - name: Terraform Apply
-      run: terraform apply -var-file ./lab.tfvars -auto-approve -input=false
+      run: terraform apply -var-file ./lab.tfvars -auto-approve
       working-directory: ./terraform_code
 
     - name: Terraform push state file
       run: terraform state push
       working-directory: ./terraform_code
+  destroy:
+    name: Destroy Infra
+    if: ${{ github.event.inputs.action == 'Terraform_destroy' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+    - uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.4.4
+    - name: Terraform Init
+      id: init
+      run: terraform init -var-file ./lab.tfvars -backend-config="bucket=$BUCKET_TF_STATE"
+      working-directory: ./terraform_code
+    - name: Terraform Validate
+      id: Validate
+      run: terraform validate
+      working-directory: ./terraform_code
+    - name: Terraform destroy
+      id: Destroy Infra
+      run: terraform destroy -auto-approve -var-file=./lab.tfvars
