@@ -35,3 +35,7 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -var-file ./lab.tfvars -auto-approve -input=false
       working-directory: ./terraform_code
+
+    - name: Terraform push state file
+      run: terraform state push
+      working-directory: ./terraform_code
