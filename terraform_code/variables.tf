@@ -6,7 +6,4 @@ variable "current_region" {
   type    = string
   default = "eu-central-1"
 }
-variable "home_ip" {
-  type    = string
-  default = "89.238.53.59/32"
-}
+variable "home_ip" {}
